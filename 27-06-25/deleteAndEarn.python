@@ -1,0 +1,13 @@
+class Solution:
+    def deleteAndEarn(self, nums):
+        from collections import Counter
+        count = Counter(nums)
+        keys = sorted(count)
+        earn1 = earn2 = 0
+        for i in range(len(keys)):
+            curr = keys[i] * count[keys[i]]
+            if i > 0 and keys[i] == keys[i-1] + 1:
+                earn1, earn2 = earn2, max(curr + earn1, earn2)
+            else:
+                earn1, earn2 = earn2, curr + earn2
+        return earn2
