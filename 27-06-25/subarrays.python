@@ -1,0 +1,11 @@
+class Solution:
+    def numSubarraysWithSum(self, nums, goal):
+        from collections import defaultdict
+        prefix = defaultdict(int)
+        prefix[0] = 1
+        count = summ = 0
+        for num in nums:
+            summ += num
+            count += prefix[summ - goal]
+            prefix[summ] += 1
+        return count
