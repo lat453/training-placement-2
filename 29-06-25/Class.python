@@ -1,0 +1,10 @@
+class Employee:
+    def __init__(self, name, base_salary):
+        self.name = name
+        self.base_salary = base_salary
+
+    def calculate_salary(self, bonus_percent):
+        return self.base_salary + (self.base_salary * bonus_percent / 100)
+
+emp1 = Employee("Alice", 50000)
+print(emp1.name, "Total Salary:", emp1.calculate_salary(10))
